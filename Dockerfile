@@ -8,4 +8,4 @@ RUN apt install -y git g++ gcc cmake libssl-dev libgrpc++-dev libz-dev pkg-confi
 RUN cd /usr/src/gtest && mkdir build && cd build && cmake .. && make -j8 && make install
 
 # build Protobuf
-RUN cd /usr/src/ && git clone https://github.com/protocolbuffers/protobuf && cd protobuf && mkdir build && cd build && cmake ../cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo && make -j8 && make install
+RUN cd /usr/src/ && git clone https://github.com/protocolbuffers/protobuf --depth=1 --recursive && cd protobuf && mkdir build && cd build && cmake ../cmake -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo && make -j8 && make install
