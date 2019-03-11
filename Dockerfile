@@ -2,10 +2,7 @@ FROM ubuntu:18.04
 WORKDIR /root
 
 # essential libraries
-RUN apt update && apt install -y software-properties-common build-essential autoconf libtool automake curl unzip git g++ gcc cmake libssl-dev libz-dev pkg-config libgtest-dev libboost-all-dev && apt-get clean
-
-# install Go
-RUN add-apt-repository ppa:gophers/go -y && apt update && apt install golang-stable && apt-get clean
+RUN apt update && apt install -y golang software-properties-common build-essential autoconf libtool automake curl unzip git g++ gcc cmake libssl-dev libz-dev pkg-config libgtest-dev libboost-all-dev && apt-get clear
 
 # build GTest
 RUN cd /usr/src/gtest && mkdir build && cd build && cmake .. && make -j8 && make install
